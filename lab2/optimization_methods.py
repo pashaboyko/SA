@@ -306,7 +306,7 @@ def conjugate_gradient_method(A, b, eps):
 
 
 
-def coordinate_descent(A, b, eps, maxIterations = 1000000):
+def coordinate_descent(A, b, eps, maxIterations = 10000):
     print(1123)
     b = np.array(list(itertools.chain(*b.tolist())))
     A = np.array(A)
