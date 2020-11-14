@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+__author__ = 'boiko'
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -202,7 +203,7 @@ class PolynomialBuilder(object):
             ax.plot(np.arange(1, self._solution.n + 1), F_norm[:, index],
                     '#01A9DB', label='$F_{0}$'.format(index + 1))
             ax.legend(loc='upper right', fontsize=16)
-            ax.set_title('Coordinate {0}'.format(index + 1))
+            ax.set_title('Кордината {0}'.format(index + 1))
             ax.grid()
 
             norm_ax.set_xticks(np.arange(0, self._solution.n + 1, 5))
@@ -210,14 +211,14 @@ class PolynomialBuilder(object):
             #             abs(self._solution.Y_[:, index] - self._solution.F_[:, index]), '#FACC2E')
             norm_ax.plot(np.arange(1, self._solution.n + 1),
                          abs(Y_norm[:, index] - F_norm[:, index]), '#FACC2E')
-            norm_ax.set_title('Residual {0}'.format(index + 1))
+            norm_ax.set_title('Помилка {0}'.format(index + 1))
             norm_ax.grid()
             manager = plt.get_current_fig_manager()
             manager.set_window_title('Graph')
-            if os_name == 'posix':
-                fig.show()
-            else:
-                plt.show()
+        if os_name == 'posix':
+            fig.show()
+        else:
+            plt.show()
 
         plt.waitforbuttonpress(0)
         plt.close(fig)

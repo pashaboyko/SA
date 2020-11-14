@@ -1,4 +1,4 @@
-__author__ = 'lex'
+__author__ = 'boiko'
 
 from numpy.polynomial import Polynomial as pm
 

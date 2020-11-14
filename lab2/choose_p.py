@@ -1,4 +1,6 @@
+__author__ = 'boiko'
 from task_solution import *
+
 
 a = Solve({
     'method' : 'coordDesc',
@@ -36,7 +38,7 @@ def test_p(a,p1,p2,p3):
                 d.append((str(i)+' '+str(j)+' '+str(k),np.linalg.norm(a.norm_error)))
     return d
 
-d = test_p(a,5,5,16)
+d = test_p(a,20,20,20)
 f = open('test_p_own.txt','w')
 miner = d[0]
 for i in d:
