@@ -5,6 +5,8 @@ __author__ = 'lex'
 import sys
 import numpy as np
 
+import time
+
 
 from PyQt5 import QtCore, QtWidgets, uic
 
@@ -12,9 +14,9 @@ import matplotlib.pylab as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvas 
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 
-from PyQt5.QtCore import pyqtSlot, pyqtSignal
-from PyQt5.QtGui import QTextDocument, QFont
-from PyQt5.QtWidgets import QApplication, QDialog, QFileDialog, QMessageBox
+from PyQt5.QtCore import pyqtSlot, pyqtSignal, QTimer, Qt
+from PyQt5.QtGui import QTextDocument, QFont, QCursor, QPixmap
+from PyQt5.QtWidgets import QApplication, QDialog, QFileDialog, QMessageBox, QSplashScreen, QVBoxLayout, QSpacerItem, QSizePolicy, QProgressBar, QLabel
 from PyQt5.uic import loadUiType
 from PyQt5 import QtGui
 from pyqtgraph import PlotWidget, plot
@@ -26,6 +28,15 @@ from task_solution import Solve
 app = QApplication(sys.argv)
 app.setApplicationName('SA-2')
 form_class, base_class = loadUiType('main_window.ui')
+
+class Splash(QSplashScreen):
+    def __init__(self, *arg, **args):
+        QSplashScreen.__init__(self, *arg, **args)
+        self.setCursor(Qt.BusyCursor)
+        self.setPixmap(QPixmap("Group 2.jpg"))
+        self.loaut = QVBoxLayout(self)
+        self.loaut.addItem(QSpacerItem(1, 1, QSizePolicy.Expanding, QSizePolicy.Expanding))
+
 
 
 class MainWindow(QDialog, form_class):
@@ -245,8 +256,24 @@ class MainWindow(QDialog, form_class):
                     weights=self.weight_method, lambda_multiblock=self.lambda_multiblock)
 
 
+def dd():
+    form = MainWindow()
+    form.setWindowTitle('System Analysis - Lab2')
+    form.show()
+
 # -----------------------------------------------------#
-form = MainWindow()
-form.setWindowTitle('System Analysis - Lab2')
-form.show()
-sys.exit(app.exec_())
+if __name__ == '__main__':
+
+
+    splash = Splash()
+    splash.show()
+
+
+    # Automatically exit after  5 seconds
+    QTimer.singleShot(5000, splash.close)
+    time.sleep(5)
+    form = MainWindow()
+    form.setWindowTitle('System Analysis - Lab2')
+    form.show()
+
+    sys.exit(app.exec_())
