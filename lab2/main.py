@@ -3,12 +3,22 @@
 __author__ = 'lex'
 
 import sys
+import numpy as np
+
+
+from PyQt5 import QtCore, QtWidgets, uic
+
+import matplotlib.pylab as plt
+from matplotlib.backends.backend_qt5agg import FigureCanvas 
+from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 
 from PyQt5.QtCore import pyqtSlot, pyqtSignal
 from PyQt5.QtGui import QTextDocument, QFont
 from PyQt5.QtWidgets import QApplication, QDialog, QFileDialog, QMessageBox
 from PyQt5.uic import loadUiType
 from PyQt5 import QtGui
+from pyqtgraph import PlotWidget, plot
+import pyqtgraph as pg
 
 from output import PolynomialBuilder
 from task_solution import Solve
@@ -76,6 +86,9 @@ class MainWindow(QDialog, form_class):
         font.setFamily('Times New Roman')
         font.setPixelSize(14)
         doc.setDefaultFont(font)
+        self.plotWidget = None
+        self.lay = QtWidgets.QVBoxLayout(self.content_plot)  
+        self.addToolBar = None
         return
 
     @pyqtSlot()
@@ -165,10 +178,35 @@ class MainWindow(QDialog, form_class):
         return
 
     @pyqtSlot()
+    def click_next(self):
+        if self.solution:
+            try:
+                fig = self.solution.plot_graphs(poly_type=self.type, method=self.method)
+                for i in reversed(range(self.lay.count())): 
+                    self.lay.itemAt(i).widget().setParent(None)
+                self.plotWidget = FigureCanvas(fig)
+                self.lay.setContentsMargins(0, 0, 0, 0)      
+                self.lay.addWidget(self.plotWidget)
+                self.lay.addWidget(NavigationToolbar(self.plotWidget, self))
+
+
+            except Exception as e:
+                QMessageBox.warning(self,'Error!','Error happened during plotting: ' + str(e))
+        return
+
+    @pyqtSlot()
     def plot_clicked(self):
         if self.solution:
             try:
-                self.solution.plot_graphs()
+                fig = self.solution.plot_graphs(0, poly_type=self.type, method=self.method)
+                for i in reversed(range(self.lay.count())): 
+                    self.lay.itemAt(i).widget().setParent(None)
+                self.plotWidget = FigureCanvas(fig)
+                self.lay.setContentsMargins(0, 0, 0, 0)      
+                self.lay.addWidget(self.plotWidget)
+                self.lay.addWidget(NavigationToolbar(self.plotWidget, self))
+
+
             except Exception as e:
                 QMessageBox.warning(self,'Error!','Error happened during plotting: ' + str(e))
         return

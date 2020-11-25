@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1254</width>
-    <height>600</height>
+    <width>1511</width>
+    <height>763</height>
    </rect>
   </property>
   <property name="palette">
@@ -590,7 +590,7 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
        <rect>
         <x>10</x>
         <y>0</y>
-        <width>241</width>
+        <width>351</width>
         <height>71</height>
        </rect>
       </property>
@@ -642,9 +642,9 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
      <widget class="QGroupBox" name="groupBox_7">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>390</x>
         <y>0</y>
-        <width>311</width>
+        <width>431</width>
         <height>71</height>
        </rect>
       </property>
@@ -710,7 +710,7 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
        <rect>
         <x>10</x>
         <y>70</y>
-        <width>561</width>
+        <width>811</width>
         <height>71</height>
        </rect>
       </property>
@@ -962,20 +962,17 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_10">
-       <property name="maximumSize">
-        <size>
-         <width>400</width>
-         <height>16777215</height>
-        </size>
+      <widget class="QPushButton" name="plot_button_next">
+       <property name="styleSheet">
+        <string notr="true"/>
        </property>
        <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap>Group 12.png</pixmap>
+        <string>Next Plot</string>
        </property>
       </widget>
+     </item>
+     <item>
+      <widget class="QWidget" name="content_plot" native="true"/>
      </item>
     </layout>
    </item>
@@ -1006,8 +1003,8 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
    <slot>exec_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>379</x>
-     <y>219</y>
+     <x>1051</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
      <x>309</x>
@@ -1022,8 +1019,8 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
    <slot>plot_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>526</x>
-     <y>219</y>
+     <x>1474</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
      <x>309</x>
@@ -1038,8 +1035,8 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
    <slot>samples_modified(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>568</x>
-     <y>53</y>
+     <x>151</x>
+     <y>148</y>
     </hint>
     <hint type="destinationlabel">
      <x>309</x>
@@ -1054,8 +1051,8 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
    <slot>dimension_modified(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>361</x>
-     <y>44</y>
+     <x>631</x>
+     <y>53</y>
     </hint>
     <hint type="destinationlabel">
      <x>309</x>
@@ -1070,8 +1067,8 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
    <slot>dimension_modified(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>361</x>
-     <y>78</y>
+     <x>631</x>
+     <y>84</y>
     </hint>
     <hint type="destinationlabel">
      <x>309</x>
@@ -1086,8 +1083,8 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
    <slot>dimension_modified(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>361</x>
-     <y>112</y>
+     <x>631</x>
+     <y>115</y>
     </hint>
     <hint type="destinationlabel">
      <x>309</x>
@@ -1102,8 +1099,8 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
    <slot>degree_modified(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>227</x>
-     <y>81</y>
+     <x>454</x>
+     <y>73</y>
     </hint>
     <hint type="destinationlabel">
      <x>309</x>
@@ -1118,8 +1115,8 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
    <slot>degree_modified(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>227</x>
-     <y>131</y>
+     <x>454</x>
+     <y>103</y>
     </hint>
     <hint type="destinationlabel">
      <x>309</x>
@@ -1134,7 +1131,7 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
    <slot>degree_modified(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>244</x>
+     <x>454</x>
      <y>133</y>
     </hint>
     <hint type="destinationlabel">
@@ -1150,8 +1147,8 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
    <slot>type_modified(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>86</x>
-     <y>78</y>
+     <x>297</x>
+     <y>72</y>
     </hint>
     <hint type="destinationlabel">
      <x>309</x>
@@ -1166,8 +1163,8 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
    <slot>type_modified(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>86</x>
-     <y>186</y>
+     <x>297</x>
+     <y>132</y>
     </hint>
     <hint type="destinationlabel">
      <x>309</x>
@@ -1182,8 +1179,8 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
    <slot>type_modified(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>86</x>
-     <y>150</y>
+     <x>297</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
      <x>309</x>
@@ -1198,8 +1195,8 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
    <slot>type_modified(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>86</x>
-     <y>114</y>
+     <x>297</x>
+     <y>92</y>
     </hint>
     <hint type="destinationlabel">
      <x>309</x>
@@ -1218,8 +1215,8 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
      <y>199</y>
     </hint>
     <hint type="destinationlabel">
-     <x>483</x>
-     <y>136</y>
+     <x>151</x>
+     <y>118</y>
     </hint>
    </hints>
   </connection>
@@ -1234,8 +1231,8 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
      <y>199</y>
     </hint>
     <hint type="destinationlabel">
-     <x>483</x>
-     <y>95</y>
+     <x>151</x>
+     <y>87</y>
     </hint>
    </hints>
   </connection>
@@ -1246,8 +1243,8 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
    <slot>input_modified(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>483</x>
-     <y>95</y>
+     <x>151</x>
+     <y>87</y>
     </hint>
     <hint type="destinationlabel">
      <x>309</x>
@@ -1262,8 +1259,8 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
    <slot>output_modified(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>483</x>
-     <y>136</y>
+     <x>151</x>
+     <y>118</y>
     </hint>
     <hint type="destinationlabel">
      <x>309</x>
@@ -1278,8 +1275,8 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
    <slot>lambda_calc_method_changed(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>301</x>
-     <y>219</y>
+     <x>1369</x>
+     <y>73</y>
     </hint>
     <hint type="destinationlabel">
      <x>309</x>
@@ -1294,8 +1291,8 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
    <slot>weights_modified(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>136</x>
-     <y>220</y>
+     <x>1194</x>
+     <y>73</y>
     </hint>
     <hint type="destinationlabel">
      <x>309</x>
@@ -1310,7 +1307,7 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
    <slot>dimension_modified(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>378</x>
+     <x>631</x>
      <y>146</y>
     </hint>
     <hint type="destinationlabel">
@@ -1326,8 +1323,8 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
    <slot>method_modified(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1020</x>
-     <y>100</y>
+     <x>903</x>
+     <y>54</y>
     </hint>
     <hint type="destinationlabel">
      <x>574</x>
@@ -1342,12 +1339,28 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
    <slot>method_modified(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1020</x>
-     <y>130</y>
+     <x>963</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
      <x>574</x>
      <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>plot_button_next</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>click_next()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1219</x>
+     <y>218</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1219</x>
+     <y>218</y>
     </hint>
    </hints>
   </connection>
@@ -1372,6 +1385,7 @@ innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass
   <slot>degree_modified(int)</slot>
   <slot>type_modified(bool)</slot>
   <slot>plot_clicked()</slot>
+  <slot>click_next()</slot>
   <slot>exec_clicked()</slot>
   <slot>input_modified(QString)</slot>
   <slot>output_modified(QString)</slot>

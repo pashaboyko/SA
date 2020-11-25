@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-__author__ = 'boiko'
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -32,6 +31,8 @@ class PolynomialBuilder(object):
         self.maxX = [X.max(axis=0).getA1() for X in solution.X_]
         self.minY = solution.Y_.min(axis=0).getA1()
         self.maxY = solution.Y_.max(axis=0).getA1()
+        self.index = 0
+        self.index_norm = []
 
     def _form_lamb_lists(self):
         """
@@ -176,49 +177,52 @@ class PolynomialBuilder(object):
                                           'denormed:\n{result}\n'.format(i + 1, result=
         self._print_F_i_transformed_denormed(i))
                                           for i in range(self._solution.Y.shape[1])]
+        
+        self.index_norm = []
+        for i in range(self._solution.Y.shape[1]):
+            self.index_norm.append(0)
         return '\n'.join(psi_strings + phi_strings + f_strings + f_strings_transformed + f_strings_transformed_denormed)
 
-    def plot_graphs(self):
+    def plot_graphs(self, index = 1, poly_type="", method=""):
+
+        if index != 0 :
+            self.index = self.index + 1
+            if self.index >= self._solution.Y.shape[1]:
+                self.index = 0
+
         Y_norm = self._solution.Y_
         F_norm = self._solution.F_
-        for index in range(self._solution.Y.shape[1]):
-            Y_norm[:, index] = (Y_norm[:, index] - self.minY[index]) / (self.maxY[index] - self.minY[index])
-            F_norm[:, index] = (F_norm[:, index] - self.minY[index]) / (self.maxY[index] - self.minY[index])
+    
 
+        if self.index_norm[self.index] < 1:
+        
+            Y_norm[:, self.index] = (Y_norm[:, self.index] - self.minY[self.index]) / (self.maxY[self.index] - self.minY[self.index])
+            F_norm[:, self.index] = (F_norm[:, self.index] - self.minY[self.index]) / (self.maxY[self.index] - self.minY[self.index])
 
-        fig, axes = plt.subplots(2, self._solution.Y.shape[1], figsize=(13, 13))
-        if self._solution.Y.shape[1] == 1:
-            axes[0] = [axes[0]]
-            axes[1] = [axes[1]]
-        for index in range(self._solution.Y.shape[1]):
-            ax = axes[0][index]  # real and estimated graphs
-            norm_ax = axes[1][index]  # abs residual graph
-            ax.set_xticks(np.arange(0, self._solution.n + 1, 5))
-            #ax.plot(np.arange(1, self._solution.n + 1), self._solution.Y_[:, index],
-            #        '#FF0040', label='$Y_{0}$'.format(index + 1))
-            ax.plot(np.arange(1, self._solution.n + 1), Y_norm[:, index],
-                    '#FF0040', label='$Y_{0}$'.format(index + 1))
-            #ax.plot(np.arange(1, self._solution.n + 1), self._solution.F_[:, index],
-            #        '#01A9DB', label='$F_{0}$'.format(index + 1))
-            ax.plot(np.arange(1, self._solution.n + 1), F_norm[:, index],
-                    '#01A9DB', label='$F_{0}$'.format(index + 1))
-            ax.legend(loc='upper right', fontsize=16)
-            ax.set_title('Кордината {0}'.format(index + 1))
-            ax.grid()
+            self.index_norm[self.index] = self.index_norm[self.index] + 1
+        fig, axes = plt.subplots(1,figsize=(10,10))
+    
 
-            norm_ax.set_xticks(np.arange(0, self._solution.n + 1, 5))
-            #norm_ax.plot(np.arange(1, self._solution.n + 1),
-            #             abs(self._solution.Y_[:, index] - self._solution.F_[:, index]), '#FACC2E')
-            norm_ax.plot(np.arange(1, self._solution.n + 1),
-                         abs(Y_norm[:, index] - F_norm[:, index]), '#FACC2E')
-            norm_ax.set_title('Помилка {0}'.format(index + 1))
-            norm_ax.grid()
-            manager = plt.get_current_fig_manager()
-            manager.set_window_title('Graph')
-        if os_name == 'posix':
-            fig.show()
-        else:
-            plt.show()
+        ax = axes  # real and estimated graphs
 
-        plt.waitforbuttonpress(0)
-        plt.close(fig)
+        ax.title.set_text(f'Наближення, реальні значення, нев`язка \n Полином - {poly_type} Метод - {method}')
+        #norm_ax = axes[1][index]  # abs residual graph
+        ax.set_xticks(np.arange(0, self._solution.n + 1, 5))
+        #ax.plot(np.arange(1, self._solution.n + 1), self._solution.Y_[:, index],
+        #        '#FF0040', label='$Y_{0}$'.format(index + 1))
+        ax.plot(np.arange(1, self._solution.n + 1), Y_norm[:, self.index],
+                '#008000', label='$Y_{0}$'.format(self.index + 1))
+        #ax.plot(np.arange(1, self._solution.n + 1), self._solution.F_[:, index],
+        #        '#01A9DB', label='$F_{0}$'.format(index + 1))
+        ax.plot(np.arange(1, self._solution.n + 1), F_norm[:, self.index],
+                '#FF0000', label='$F_{0}$'.format(self.index + 1),linestyle='--')
+        ax.plot(np.arange(1, self._solution.n + 1),
+                             abs(Y_norm[:, self.index] - F_norm[:, self.index]), '#808080',  label='$e_{0}$'.format(self.index + 1))
+        ax.legend(loc='upper right', fontsize=16)
+        #ax.set_title("Координата і нев'язка {0}".format(index + 1))
+        ax.grid()
+
+        #norm_ax.set_xticks(np.arange(0, self._solution.n + 1, 5))
+        #norm_ax.plot(np.arange(1, self._solution.n + 1),
+        #             abs(self._solution.Y_[:, index] - self._solution.F_[:, index]), '#FACC2E')
+        return fig
