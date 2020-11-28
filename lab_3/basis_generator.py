@@ -1,5 +1,5 @@
 from numpy.polynomial import Polynomial as pm
-__author__ = 'vlad'
+__author__ = 'boiko'
 
 
 def basis_sh_chebyshev(degree):

@@ -6,7 +6,7 @@ from os import name as os_name
 from lab_3.solve import Solve
 import lab_3.basis_generator as b_gen
 
-__author__ = 'vlad'
+__author__ = 'boiko'
 
 
 class PolynomialBuilder(object):

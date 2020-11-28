@@ -1,4 +1,4 @@
-__author__ = 'strike'
+__author__ = 'boiko'
 import numpy as np
 
 def conjugate_gradient_method(A, b, eps):

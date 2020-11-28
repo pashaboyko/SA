@@ -1,4 +1,4 @@
-__author__ = 'strike'
+__author__ = 'boiko'
 
 def read_data(filename = 'data_2.txt'):
     f = open(filename, 'r')

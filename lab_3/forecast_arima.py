@@ -1,4 +1,4 @@
-__author__ = 'vlad'
+__author__ = 'boiko'
 import warnings
 import math
 

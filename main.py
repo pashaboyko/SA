@@ -66,4 +66,5 @@ class StartWindow(QDialog, form_class):
 if __name__ == '__main__':
 	form = StartWindow()
 	form.show()
+	#QtCore.QTimer.singleShot(0, form.close)
 	sys.exit(app.exec_())
