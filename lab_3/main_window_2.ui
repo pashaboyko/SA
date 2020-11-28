@@ -1,0 +1,1252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1625</width>
+    <height>763</height>
+   </rect>
+  </property>
+  <property name="palette">
+   <palette>
+    <active>
+     <colorrole role="WindowText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="217">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>235</red>
+        <green>236</green>
+        <blue>240</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>235</red>
+        <green>236</green>
+        <blue>240</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>235</red>
+        <green>236</green>
+        <blue>240</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </active>
+    <inactive>
+     <colorrole role="WindowText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="217">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>235</red>
+        <green>236</green>
+        <blue>240</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>235</red>
+        <green>236</green>
+        <blue>240</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>235</red>
+        <green>236</green>
+        <blue>240</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </inactive>
+    <disabled>
+     <colorrole role="WindowText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="63">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>235</red>
+        <green>236</green>
+        <blue>240</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>235</red>
+        <green>236</green>
+        <blue>240</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>235</red>
+        <green>236</green>
+        <blue>240</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </disabled>
+   </palette>
+  </property>
+  <property name="font">
+   <font>
+    <family>Microsoft New Tai Lue</family>
+    <weight>50</weight>
+    <bold>false</bold>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Form1</string>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::LeftToRight</enum>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #EBECF0</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="2">
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="palette">
+      <palette>
+       <active>
+        <colorrole role="Button">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>178</green>
+           <blue>102</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Base">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>178</green>
+           <blue>102</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Window">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>178</green>
+           <blue>102</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="Button">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>178</green>
+           <blue>102</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Base">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>178</green>
+           <blue>102</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Window">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>178</green>
+           <blue>102</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="Button">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>178</green>
+           <blue>102</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Base">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>178</green>
+           <blue>102</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Window">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>178</green>
+           <blue>102</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+     </property>
+     <property name="title">
+      <string>Розмірність векторів</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="styleSheet">
+         <string notr="true">
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+        </property>
+        <property name="text">
+         <string>X3</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QSpinBox" name="y_dim">
+        <property name="styleSheet">
+         <string notr="true">
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+        </property>
+        <property name="value">
+         <number>4</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QSpinBox" name="x2_dim">
+        <property name="styleSheet">
+         <string notr="true">
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+        </property>
+        <property name="value">
+         <number>2</number>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QSpinBox" name="x1_dim">
+        <property name="styleSheet">
+         <string notr="true">
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+        </property>
+        <property name="value">
+         <number>2</number>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QSpinBox" name="x3_dim">
+        <property name="styleSheet">
+         <string notr="true">
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+        </property>
+        <property name="value">
+         <number>3</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="styleSheet">
+         <string notr="true">
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+        </property>
+        <property name="text">
+         <string>X2</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="styleSheet">
+         <string notr="true">
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+        </property>
+        <property name="text">
+         <string>Y</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="styleSheet">
+         <string notr="true">
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+        </property>
+        <property name="text">
+         <string>X1</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="5">
+    <widget class="QTextBrowser" name="results_field">
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+     </property>
+     <property name="lineWrapMode">
+      <enum>QTextEdit::NoWrap</enum>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.AppleSystemUIFont'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'.Menio Regular'; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="placeholderText">
+      <string>Результати</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3" colspan="4">
+    <widget class="QGroupBox" name="groupBox_8">
+     <property name="styleSheet">
+      <string>
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QGroupBox" name="groupBox_9">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>0</y>
+        <width>351</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+      </property>
+      <property name="title">
+       <string>Методи вирішення:</string>
+      </property>
+      <widget class="QRadioButton" name="radioCoordDesc">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>221</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string>
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+       </property>
+       <property name="text">
+        <string>Метод покординатного спуску</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="radioConjucate">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>40</y>
+         <width>281</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string>
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+       </property>
+       <property name="text">
+        <string>Метод сопряженных градиентов</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_7">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>0</y>
+        <width>431</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+      </property>
+      <property name="title">
+       <string>Додаткові параметри</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QLabel" name="label_9">
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>  Ваги:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="weights_box">
+         <property name="currentText">
+          <string>average</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>average</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>scaled</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="lambda_check">
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+         </property>
+         <property name="text">
+          <string>Визначати lambda з
+ 3 систем рівнянь</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_6">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>811</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>ВИКОНАННЯ ПРОГРАМИ</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetDefaultConstraint</enum>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_10">
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Крок прогнузування</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="predictBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>50</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="exec_button">
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>Виконати</string>
+         </property>
+         <property name="default">
+          <bool>true</bool>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="plot_button">
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>Будувати графік</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QGroupBox" name="groupBox_5">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+     </property>
+     <property name="title">
+      <string>ВИБІР ПОЛІНОМІВ</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="title">
+         <string>Данні</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_5">
+         <item row="0" column="1">
+          <widget class="QSpinBox" name="sample_spin">
+           <property name="maximum">
+            <number>999</number>
+           </property>
+           <property name="value">
+            <number>45</number>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Розмір</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QToolButton" name="select_input">
+           <property name="text">
+            <string>...</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLineEdit" name="line_output">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="placeholderText">
+            <string>Output file</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLineEdit" name="line_input">
+           <property name="text">
+            <string>data_3_dst.txt</string>
+           </property>
+           <property name="placeholderText">
+            <string>Input file</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QToolButton" name="select_output">
+           <property name="text">
+            <string>...</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox_3">
+        <property name="styleSheet">
+         <string notr="true">
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+        </property>
+        <property name="title">
+         <string>Вид полінома:</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QRadioButton" name="radio_sh_cheb">
+           <property name="text">
+            <string>Legendre</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radio_cheb">
+           <property name="text">
+            <string>Legendre_sh</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radio_sh_cheb_2">
+           <property name="text">
+            <string>Chebyshev_sh II</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="custom_check">
+           <property name="text">
+            <string>Custom structure</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox_4">
+        <property name="styleSheet">
+         <string notr="true">
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+        </property>
+        <property name="title">
+         <string>Степені поліномів:</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_4">
+         <item row="1" column="1">
+          <widget class="QSpinBox" name="x2_deg">
+           <property name="styleSheet">
+            <string notr="true">
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+           </property>
+           <property name="value">
+            <number>5</number>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_6">
+           <property name="styleSheet">
+            <string notr="true">
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+           </property>
+           <property name="text">
+            <string>X1</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QSpinBox" name="x1_deg">
+           <property name="styleSheet">
+            <string notr="true">
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+           </property>
+           <property name="value">
+            <number>3</number>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_7">
+           <property name="styleSheet">
+            <string notr="true">
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+           </property>
+           <property name="text">
+            <string>X3</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QSpinBox" name="x3_deg">
+           <property name="styleSheet">
+            <string notr="true">
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+           </property>
+           <property name="value">
+            <number>12</number>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_8">
+           <property name="styleSheet">
+            <string notr="true">
+background-color: rgba(255, 178, 102, 255)
+innershadow(three-pass-box, #c3cbdb, 10, 0.0, 6.0, 6.0) , innershadow(three-pass-box, rgba(255, 255, 255, 0.89), 10, 0.0, -6.0, -6.0)</string>
+           </property>
+           <property name="text">
+            <string>X2</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="5">
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QProgressBar" name="progress">
+       <property name="value">
+        <number>2</number>
+       </property>
+       <property name="textVisible">
+        <bool>true</bool>
+       </property>
+       <property name="invertedAppearance">
+        <bool>false</bool>
+       </property>
+       <property name="textDirection">
+        <enum>QProgressBar::TopToBottom</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="plot_button_next">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>Next Plot</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QWidget" name="content_plot" native="true"/>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>x1_deg</tabstop>
+  <tabstop>x2_deg</tabstop>
+  <tabstop>x3_deg</tabstop>
+  <tabstop>x1_dim</tabstop>
+  <tabstop>x2_dim</tabstop>
+  <tabstop>x3_dim</tabstop>
+  <tabstop>y_dim</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>exec_button</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>exec_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1051</x>
+     <y>146</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>309</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>plot_button</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>plot_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1474</x>
+     <y>146</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>309</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>x1_dim</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>Form</receiver>
+   <slot>dimension_modified(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>631</x>
+     <y>53</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>309</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>x2_dim</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>Form</receiver>
+   <slot>dimension_modified(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>631</x>
+     <y>84</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>309</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>x3_dim</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>Form</receiver>
+   <slot>dimension_modified(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>631</x>
+     <y>115</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>309</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>x1_deg</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>Form</receiver>
+   <slot>degree_modified(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>454</x>
+     <y>73</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>309</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>x2_deg</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>Form</receiver>
+   <slot>degree_modified(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>454</x>
+     <y>103</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>309</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>x3_deg</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>Form</receiver>
+   <slot>degree_modified(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>454</x>
+     <y>133</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>309</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lambda_check</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Form</receiver>
+   <slot>lambda_calc_method_changed(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1369</x>
+     <y>73</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>309</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>weights_box</sender>
+   <signal>currentIndexChanged(QString)</signal>
+   <receiver>Form</receiver>
+   <slot>weights_modified(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1194</x>
+     <y>73</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>309</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>y_dim</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>Form</receiver>
+   <slot>dimension_modified(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>631</x>
+     <y>146</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>311</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>plot_button_next</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>click_next()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1219</x>
+     <y>218</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1219</x>
+     <y>218</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radio_cheb</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Form</receiver>
+   <slot>type_modified(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>339</x>
+     <y>84</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>812</x>
+     <y>381</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radio_sh_cheb</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Form</receiver>
+   <slot>type_modified(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>339</x>
+     <y>63</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>812</x>
+     <y>381</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radio_sh_cheb_2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Form</receiver>
+   <slot>type_modified(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>339</x>
+     <y>105</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>812</x>
+     <y>381</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>select_output</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>output_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>199</x>
+     <y>126</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>812</x>
+     <y>381</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>select_input</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>input_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>199</x>
+     <y>94</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>812</x>
+     <y>381</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sample_spin</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>Form</receiver>
+   <slot>samples_modified(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>210</x>
+     <y>63</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>812</x>
+     <y>381</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Form</sender>
+   <signal>output_changed(QString)</signal>
+   <receiver>line_output</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>812</x>
+     <y>381</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>114</x>
+     <y>126</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Form</sender>
+   <signal>input_changed(QString)</signal>
+   <receiver>line_input</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>812</x>
+     <y>381</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>114</x>
+     <y>94</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>custom_check</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Form</receiver>
+   <slot>structure_changed(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>344</x>
+     <y>128</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>812</x>
+     <y>381</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <signal>input_changed(QString)</signal>
+  <signal>output_changed(QString)</signal>
+  <signal>x1_dim_changed(int)</signal>
+  <signal>x2_dim_changed(int)</signal>
+  <signal>x3_dim_changed(int)</signal>
+  <signal>x1_deg_changed(int)</signal>
+  <signal>x2_deg_changed(int)</signal>
+  <signal>x3_deg_changed(int)</signal>
+  <signal>type_cheb()</signal>
+  <signal>type_lege()</signal>
+  <signal>type_lagg()</signal>
+  <signal>type_herm()</signal>
+  <slot>input_clicked()</slot>
+  <slot>output_clicked()</slot>
+  <slot>samples_modified(int)</slot>
+  <slot>dimension_modified(int)</slot>
+  <slot>degree_modified(int)</slot>
+  <slot>type_modified(bool)</slot>
+  <slot>plot_clicked()</slot>
+  <slot>click_next()</slot>
+  <slot>exec_clicked()</slot>
+  <slot>input_modified(QString)</slot>
+  <slot>output_modified(QString)</slot>
+  <slot>weights_modified(QString)</slot>
+  <slot>lambda_calc_method_changed(bool)</slot>
+  <slot>method_modified(bool)</slot>
+ </slots>
+</ui>
