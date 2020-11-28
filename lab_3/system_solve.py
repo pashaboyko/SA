@@ -81,3 +81,36 @@ def conjugate_gradient_method_v3(A, b, eps):
             beta = np.linalg.norm(rnext)**2 / np.linalg.norm(rcur)**2
             p = rnext + beta * p
     return np.matrix(x)
+
+def coordinate_descent(A, b, eps, maxIterations = 10000):
+    b = np.array(list(itertools.chain(*b.tolist())))
+    A = np.array(A)
+    N = A.shape[0]
+    x = [0 for i in range(N)]
+    xprev = [0.0 for i in range(N)]
+    for i in range(maxIterations):
+        for j in range(N):
+            xprev[j] = x[j]
+        for j in range(N):
+            summ = 0.0
+            for k in range(N):
+                if (k != j):
+                    summ = summ + A[j][k] * x[k]
+            x[j] = (b[j] - summ) / A[j][j]
+        diff1norm = 0.0
+        oldnorm = 0.0
+        for j in range(N):
+            diff1norm = diff1norm + abs(x[j] - xprev[j])
+            oldnorm = oldnorm + abs(xprev[j])
+        if oldnorm == 0.0:
+            oldnorm = 1.0
+        norm = diff1norm / oldnorm
+        if (norm < eps) and i != 0:
+            k = []
+            for i in x:
+                k.append([i])
+            return np.matrix(k)
+    k = []
+    for i in x:
+        k.append([i])
+    return np.matrix(k)

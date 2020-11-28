@@ -18,7 +18,7 @@ class PolynomialBuilder(object):
             #self.symbol = 'T'
         if solution.poly_type == 'legendre':
             self.symbol = 'P'
-            self.basis = b_gen.basis_chebyshev(max_degree)
+            self.basis = b_gen.basis_sh_legendre(max_degree)
         #elif solution.poly_type == 'cheb':
             #self.symbol = 'K'
         elif solution.poly_type == 'sh_legendre':
