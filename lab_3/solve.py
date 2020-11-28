@@ -123,7 +123,7 @@ class Solve(object):
         elif self.poly_type == 'sh_legendre':
             self.poly_f = special.eval_sh_legendre
         elif self.poly_type == 'sh_cheb_2':
-            self.poly_f = lambda deg, x: special.eval_sh_chebyu(deg, (0.5+0.25*x))
+            self.poly_f = lambda deg, x: special.eval_sh_chebyu(deg, x) / (deg + 1)
         elif self.poly_type == 'sin':
             self.poly_f = lambda deg, x: ((np.sin(x) + np.pi) / (2 * np.pi)) ^ deg
         elif self.poly_type == 'cos':

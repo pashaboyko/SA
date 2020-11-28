@@ -17,6 +17,7 @@ def choose_arima_order(endog):
             with warnings.catch_warnings():
                 warnings.simplefilter("ignore")
                 res = mod.fit(disp=0, solver='bfgs', maxiter=5000)
+                #res = mod.fit(disp=0, solver='cg', maxiter=5000)
         except:
             return float('inf')
         if math.isnan(res.aic):
