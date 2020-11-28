@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-__author__ = 'lex'
+__author__ = 'boiko'
 
 import sys
 import numpy as np
@@ -22,12 +22,12 @@ from PyQt5 import QtGui
 from pyqtgraph import PlotWidget, plot
 import pyqtgraph as pg
 
-from output import PolynomialBuilder
-from task_solution import Solve
+from lab_2.output import PolynomialBuilder
+from lab_2.task_solution import Solve
 
 app = QApplication(sys.argv)
 app.setApplicationName('SA-2')
-form_class, base_class = loadUiType('main_window.ui')
+form_class, base_class = loadUiType('lab_2/main_window.ui')
 
 class Splash(QSplashScreen):
     def __init__(self, *arg, **args):
@@ -39,7 +39,7 @@ class Splash(QSplashScreen):
 
 
 
-class MainWindow(QDialog, form_class):
+class MainWindow_2(QDialog, form_class):
     # signals:
     input_changed = pyqtSignal('QString')
     output_changed = pyqtSignal('QString')
@@ -55,8 +55,8 @@ class MainWindow(QDialog, form_class):
     # type_herm = pyqtSignal()
 
 
-    def __init__(self, *args):
-        super(MainWindow, self).__init__(*args)
+    def __init__(self, parent=None):
+        super(MainWindow_2, self).__init__(parent)
 
         # setting up ui
         self.setupUi(self)
@@ -84,8 +84,8 @@ class MainWindow(QDialog, form_class):
         elif self.radio_herm.isChecked():
             self.type = 'hermit'
 
-        self.input_path = 'Data/input.txt'
-        self.output_path = 'output.xlsx'
+        self.input_path = 'lab_2/Data/input.txt'
+        self.output_path = 'lab_2/output.xlsx'
         self.samples_num = self.sample_spin.value()
         self.lambda_multiblock = self.lambda_check.isChecked()
         self.weight_method = self.weights_box.currentText().lower()
@@ -255,7 +255,7 @@ class MainWindow(QDialog, form_class):
                     samples=self.samples_num, input_file=self.input_path, output_file=self.output_path,
                     weights=self.weight_method, lambda_multiblock=self.lambda_multiblock)
 
-
+'''
 def dd():
     form = MainWindow()
     form.setWindowTitle('System Analysis - Lab2')
@@ -277,3 +277,4 @@ if __name__ == '__main__':
     form.show()
 
     sys.exit(app.exec_())
+'''

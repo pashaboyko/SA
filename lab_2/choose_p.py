@@ -1,5 +1,5 @@
 __author__ = 'boiko'
-from task_solution import *
+from lab_2.task_solution import *
 
 
 a = Solve({

@@ -3,9 +3,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from os import name as os_name
-from task_solution import Solve
-import basis_gen as b_gen
-from depict_poly import _Polynom
+from lab_2.task_solution import Solve
+import lab_2.basis_gen as b_gen
+from lab_2.depict_poly import _Polynom
 
 
 class PolynomialBuilder(object):

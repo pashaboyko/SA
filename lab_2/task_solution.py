@@ -4,7 +4,7 @@ from copy import deepcopy
 from scipy import special
 from openpyxl import Workbook
 import numpy as np
-from optimization_methods import *
+from lab_2.optimization_methods import *
 from tabulate import tabulate as tb
 
 

@@ -1,4 +1,4 @@
-__author__ = 'lex'
+__author__ = 'boiko'
 
 import numpy as np
 import itertools

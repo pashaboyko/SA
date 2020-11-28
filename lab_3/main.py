@@ -30,8 +30,8 @@ class MainWindow(QDialog, form_class):
     output_changed = pyqtSignal('QString')
 
 
-    def __init__(self, *args):
-        super(MainWindow, self).__init__(*args)
+    def __init__(self, parent =None):
+        super(MainWindow, self).__init__(parent)
 
         # setting up ui
         self.setupUi(self)
@@ -68,6 +68,12 @@ class MainWindow(QDialog, form_class):
         self.lay = QtWidgets.QVBoxLayout(self.content_plot)  
         self.addToolBar = None
         return
+
+    @staticmethod
+    def launch():
+        dialog = MainWindow()
+        dialog.setWindowTitle("Lab_3")
+        dialog.show()
 
     @pyqtSlot()
     def input_clicked(self):
@@ -235,7 +241,9 @@ class MainWindow(QDialog, form_class):
 
 
 # -----------------------------------------------------#
+'''
 form = MainWindow()
 form.setWindowTitle('System Analysis - Lab 3')
 form.show()
 sys.exit(app.exec_())
+'''
