@@ -1,10 +1,44 @@
 from copy import deepcopy
-
+from scipy.stats import logistic
 from tabulate import tabulate as tb
 from math import pi
 
+
 from lab_3.system_solve import *
 from lab_3.solve import Solve
+
+#sigmoid function
+def sigmoid(X):
+   return 1/(1+np.exp(-X))
+
+'''def selu(x, alpha=1.67326324, scale=1.05070098):
+    x = list(x)
+    print(x)
+    b = []
+    #print(x.shape)
+    for i in range(len(x)):
+        a = list(x[i])
+        for j in range(len(a)):
+            print('suka')
+            if x[i][j] > 0.0:
+                print(x[i][j])
+                m = scale * x[i][j]
+            if x[i][j] < 0.0:
+                m = scale * alpha * (np.exp(x[i][j]) - 1)'''
+
+def softmax(X):
+    expo = np.exp(X)
+    expo_sum = np.sum(np.exp(X))
+    return expo/expo_sum
+
+def tanh_deriv(x):
+    return 1 - pow(np.tanh(x), 2)
+
+def logistic(x):
+    return 1/(1 + np.exp(-x))
+
+def logistic_derivative(x):
+    return logistic(x)*(1-logistic(x))
 
 
 class SolveExpTh(Solve):
@@ -82,7 +116,12 @@ class SolveExpTh(Solve):
         for i in range(len(self.X)):
             vec = vector(self.X[i], self.deg[i])
             A = np.append(A, vec, 1)
-        self.A_log = np.matrix(np.tanh(A))
+        #self.A_log = np.matrix(np.tanh(A))
+        self.A_log = np.matrix(np.arcsinh(A))
+        #self.A_log = np.matrix(sigmoid(A))
+        #self.A_log = np.matrix(softmax(A))
+        #self.A_log = np.matrix(logistic_derivative(A))
+        print(self.A_log)
         self.A = np.exp(self.A_log)
 
     def lamb(self):
@@ -123,7 +162,11 @@ class SolveExpTh(Solve):
         self.Psi_tanh = list()
         for i in range(self.dim[3]):
             self.Psi.append(np.exp(built_psi(self.Lamb[:, i])) - 1)  # Psi = exp(sum(lambda*tanh(phi))) - 1
-            self.Psi_tanh.append(np.tanh(self.Psi[-1]))
+            #self.Psi_tanh.append(np.tanh(self.Psi[-1]))
+            self.Psi_tanh.append(np.arcsinh(self.Psi[-1]))
+            #self.Psi_tanh.append(sigmoid(self.Psi[-1]))
+            #self.Psi_tanh.append(softmax(self.Psi[-1]))
+            #self.Psi_tanh.append(logistic_derivative(self.Psi[-1]))
 
 
     def built_a(self):
@@ -160,8 +203,14 @@ class SolveExpTh(Solve):
         self.Fi_tanh = list()
         self.Fi = list()
         for i in range(self.dim[3]):
-            self.Fi.append(np.exp(self.built_F1i(self.Psi_tanh[i], self.a[:, i])) - 1)  # Fi = exp(sum(a*tanh(Psi))) - 1
-            self.Fi_tanh.append(np.tanh(self.Fi[i]))
+            self.Fi.append(np.exp(self.built_F1i(self.Psi_tanh[i], self.a[:, i])) - 1)  # Fi = exp(sum(a*sigmoid(Psi))) - 1
+            #self.Fi_tanh.append(np.tanh(self.Fi[i]))
+            #self.Fi_tanh.append(sigmoid(self.Fi[i]))
+            #self.Fi_tanh.append(softmax(self.Fi[i]))
+            self.Fi_tanh.append(np.arcsinh(self.Fi[i]))
+
+
+
 
     def built_c(self):
         self.c = np.ndarray(shape=(len(self.X), 0), dtype=float)
@@ -180,7 +229,12 @@ class SolveExpTh(Solve):
             self.norm_error.append(np.linalg.norm(self.Y[:, i] - self.F[:, i], np.inf))
 
     def aggregate(self, values, coeffs):
-        return np.exp(np.dot(np.tanh(values), coeffs)) - 1
+        #return np.exp(np.dot(np.tanh(values), coeffs)) - 1
+        #return np.exp(np.dot(sigmoid(values), coeffs)) - 1
+        #return np.exp(np.dot(logistic_derivativec(values), coeffs)) - 1
+        #return np.exp(np.dot(softmax(values), coeffs)) - 1
+        return np.exp(np.dot(np.arcsinh(values), coeffs)) - 1
+
 
     def show(self):
         text = []
