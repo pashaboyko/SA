@@ -22,7 +22,8 @@ def determine_deg(a, p1, p2, p3):
     a.define_norm_vectors()
     a.built_B()
     a.poly_func()
-    d = map(_brute, product(p1, p2, p3))
+    d = list(map(_brute, product(p1, p2, p3)))
+    print(d)
     best = d[0]
     for i in d:
         if i[1] < best[1]:

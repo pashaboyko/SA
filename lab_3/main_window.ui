@@ -107,7 +107,7 @@
          <item>
           <widget class="QRadioButton" name="radio_sh_cheb">
            <property name="text">
-            <string>Legendre</string>
+            <string>Лежандра</string>
            </property>
            <property name="checked">
             <bool>true</bool>
@@ -116,15 +116,21 @@
          </item>
          <item>
           <widget class="QRadioButton" name="radio_cheb">
+           <property name="toolTip">
+            <string comment="Зміщений Лежандра"/>
+           </property>
            <property name="text">
-            <string>Legendre_sh</string>
+            <string>ЗМ Лежандра</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QRadioButton" name="radio_sh_cheb_2">
+           <property name="toolTip">
+            <string comment="Зміщений Чебишева II"/>
+           </property>
            <property name="text">
-            <string>Chebyshev_sh II</string>
+            <string>ЗМ Чебишева II </string>
            </property>
           </widget>
          </item>
@@ -301,6 +307,13 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_5">
           <item>
+           <widget class="QPushButton" name="bruteforce_btn">
+            <property name="text">
+             <string>Найкращі степені для полінома</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QLabel" name="label_9">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
@@ -428,8 +441,8 @@
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.AppleSystemUIFont'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'.Menio Regular'; font-size:10pt;&quot;&gt;Результати&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'.Menio Regular'; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'.Menio Regular'; font-size:18pt;&quot;&gt;Результати&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'.Menio Regular'; font-size:18pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="placeholderText">
       <string>Results are shown here</string>
@@ -854,6 +867,22 @@ p, li { white-space: pre-wrap; }
     <hint type="sourcelabel">
      <x>971</x>
      <y>227</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>716</x>
+     <y>324</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bruteforce_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>bruteforce_called()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>837</x>
+     <y>56</y>
     </hint>
     <hint type="destinationlabel">
      <x>716</x>

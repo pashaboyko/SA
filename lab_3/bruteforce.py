@@ -43,16 +43,9 @@ class BruteForceWindow(QDialog, form_class):
         self.res_2.setValue(bd[1])
         self.res_3.setValue(bd[2])
 
-        msgbox = QMessageBox()
+        self.update_degrees.emit(bd[0],bd[1], bd[2])
 
-        msgbox.setText('Best degrees:'+bd.__str__()+'.')
-        msgbox.setInformativeText("Do you want to copy degrees in main window?")
-        msgbox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-        msgbox.setDefaultButton(QMessageBox.Ok)
-        ret = msgbox.exec_()
-        if ret == QMessageBox.Ok:
-            self.update_degrees.emit(bd[0],bd[1], bd[2])
-            self.close()
+        
         # result = QMessageBox.question(self, 'Long-time operation',
         #                               'Adjusting degrees lasts long. Do you want to perform it?',
         #                               QMessageBox.Ok | QMessageBox.No)
