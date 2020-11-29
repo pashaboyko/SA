@@ -3,6 +3,7 @@ from scipy.stats import logistic
 from tabulate import tabulate as tb
 from math import pi
 
+
 from lab_3.system_solve import *
 from lab_3.solve import Solve
 
@@ -116,7 +117,7 @@ class SolveExpTh(Solve):
             vec = vector(self.X[i], self.deg[i])
             A = np.append(A, vec, 1)
         #self.A_log = np.matrix(np.tanh(A))
-        self.A_log = np.matrix(np.sinh(A))
+        self.A_log = np.matrix(np.arcsinh(A))
         #self.A_log = np.matrix(sigmoid(A))
         #self.A_log = np.matrix(softmax(A))
         #self.A_log = np.matrix(logistic_derivative(A))
@@ -162,7 +163,7 @@ class SolveExpTh(Solve):
         for i in range(self.dim[3]):
             self.Psi.append(np.exp(built_psi(self.Lamb[:, i])) - 1)  # Psi = exp(sum(lambda*tanh(phi))) - 1
             #self.Psi_tanh.append(np.tanh(self.Psi[-1]))
-            self.Psi_tanh.append(np.sinh(self.Psi[-1]))
+            self.Psi_tanh.append(np.arcsinh(self.Psi[-1]))
             #self.Psi_tanh.append(sigmoid(self.Psi[-1]))
             #self.Psi_tanh.append(softmax(self.Psi[-1]))
             #self.Psi_tanh.append(logistic_derivative(self.Psi[-1]))
@@ -206,7 +207,8 @@ class SolveExpTh(Solve):
             #self.Fi_tanh.append(np.tanh(self.Fi[i]))
             #self.Fi_tanh.append(sigmoid(self.Fi[i]))
             #self.Fi_tanh.append(softmax(self.Fi[i]))
-            self.Fi_tanh.append(np.sinh(self.Fi[i]))
+            self.Fi_tanh.append(np.arcsinh(self.Fi[i]))
+
 
 
 
@@ -231,7 +233,8 @@ class SolveExpTh(Solve):
         #return np.exp(np.dot(sigmoid(values), coeffs)) - 1
         #return np.exp(np.dot(logistic_derivativec(values), coeffs)) - 1
         #return np.exp(np.dot(softmax(values), coeffs)) - 1
-        return np.exp(np.dot(sinh(values), coeffs)) - 1
+        return np.exp(np.dot(np.arcsinh(values), coeffs)) - 1
+
 
     def show(self):
         text = []
