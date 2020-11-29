@@ -25,6 +25,10 @@ def sigmoid(X):
             if x[i][j] < 0.0:
                 m = scale * alpha * (np.exp(x[i][j]) - 1)'''
 
+def softmax(X):
+    expo = np.exp(X)
+    expo_sum = np.sum(np.exp(X))
+    return expo/expo_sum
 
 def tanh_deriv(x):
     return 1 - pow(np.tanh(x), 2)
@@ -112,7 +116,9 @@ class SolveExpTh(Solve):
             vec = vector(self.X[i], self.deg[i])
             A = np.append(A, vec, 1)
         #self.A_log = np.matrix(np.tanh(A))
-        self.A_log = np.matrix(sigmoid(A))
+        self.A_log = np.matrix(np.sinh(A))
+        #self.A_log = np.matrix(sigmoid(A))
+        #self.A_log = np.matrix(softmax(A))
         #self.A_log = np.matrix(logistic_derivative(A))
         print(self.A_log)
         self.A = np.exp(self.A_log)
@@ -156,7 +162,9 @@ class SolveExpTh(Solve):
         for i in range(self.dim[3]):
             self.Psi.append(np.exp(built_psi(self.Lamb[:, i])) - 1)  # Psi = exp(sum(lambda*tanh(phi))) - 1
             #self.Psi_tanh.append(np.tanh(self.Psi[-1]))
-            self.Psi_tanh.append(sigmoid(self.Psi[-1]))
+            self.Psi_tanh.append(np.sinh(self.Psi[-1]))
+            #self.Psi_tanh.append(sigmoid(self.Psi[-1]))
+            #self.Psi_tanh.append(softmax(self.Psi[-1]))
             #self.Psi_tanh.append(logistic_derivative(self.Psi[-1]))
 
 
@@ -196,7 +204,10 @@ class SolveExpTh(Solve):
         for i in range(self.dim[3]):
             self.Fi.append(np.exp(self.built_F1i(self.Psi_tanh[i], self.a[:, i])) - 1)  # Fi = exp(sum(a*sigmoid(Psi))) - 1
             #self.Fi_tanh.append(np.tanh(self.Fi[i]))
-            self.Fi_tanh.append(sigmoid(self.Fi[i]))
+            #self.Fi_tanh.append(sigmoid(self.Fi[i]))
+            #self.Fi_tanh.append(softmax(self.Fi[i]))
+            self.Fi_tanh.append(np.sinh(self.Fi[i]))
+
 
 
     def built_c(self):
@@ -217,8 +228,10 @@ class SolveExpTh(Solve):
 
     def aggregate(self, values, coeffs):
         #return np.exp(np.dot(np.tanh(values), coeffs)) - 1
-        return np.exp(np.dot(sigmoid(values), coeffs)) - 1
+        #return np.exp(np.dot(sigmoid(values), coeffs)) - 1
         #return np.exp(np.dot(logistic_derivativec(values), coeffs)) - 1
+        #return np.exp(np.dot(softmax(values), coeffs)) - 1
+        return np.exp(np.dot(sinh(values), coeffs)) - 1
 
     def show(self):
         text = []

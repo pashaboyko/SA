@@ -16,7 +16,7 @@ import pyqtgraph as pg
 
 from lab_3.presentation import PolynomialBuilder, PolynomialBuilderExpTh
 from lab_3.solve import Solve
-from lab_3.solve_custom import SolveExpTh
+from lab_3.solve_custom import SolveExpTh, SolveExpTh1
 from lab_3.bruteforce import BruteForceWindow
 
 app = QApplication(sys.argv)
