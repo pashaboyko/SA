@@ -33,13 +33,14 @@ class Solve(object):
         # list of sum degrees [ 3,1,2] -> [3,4,6]
         self.dim_integral = [sum(self.dim[:i + 1]) for i in range(len(self.dim))]
 
-    def _minimize_equation(self, A, b, type='cjg2'):
+    def _minimize_equation(self, A, b, type='coord'):
         """
         Finds such vector x that |Ax-b|->min.
         :param A: Matrix A
         :param b: Vector b
         :return: Vector x
         """
+
         if type == 'lsq':
             return np.linalg.lstsq(A, b)[0]
         elif type == 'cjg':
@@ -48,6 +49,8 @@ class Solve(object):
             return conjugate_gradient_method_v2(A.T * A, A.T * b, self.eps)
         elif type == 'cjg3':
             return conjugate_gradient_method_v3(A.T * A, A.T * b, self.eps)
+        elif type == 'coord':
+            return coordinate_descent(A.T * A, A.T * b, self.eps)
 
     def norm_data(self):
         """

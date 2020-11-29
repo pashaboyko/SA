@@ -1,5 +1,6 @@
 __author__ = 'boiko'
 import numpy as np
+import itertools
 
 def conjugate_gradient_method(A, b, eps):
     '''
