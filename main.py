@@ -32,6 +32,7 @@ class StartWindow(QDialog, form_class):
 		if dialog.exec():
 		    pass # do stuff on success
 		self.show()
+
 		#MainWindow.launch(self)
 		return
 

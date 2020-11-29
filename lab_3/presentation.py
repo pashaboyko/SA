@@ -36,6 +36,10 @@ class PolynomialBuilder(object):
         self.maxY = solution.Y_.max(axis=0).getA1()
         self.index = 0
         self.index_norm = []
+        self.XF = None
+        self.YF = None
+        self.index_predict = 0
+
 
     def _form_lamb_lists(self):
         """
@@ -221,9 +225,7 @@ class PolynomialBuilder(object):
 
     
 
-    def compare_vals(self, name, real, predicted, reconstructed=None):
-        fig = plt.figure()
-        axes = plt.axes()
+    def compare_vals(self,fig,axes, name, real, predicted, reconstructed=None):
         r = np.arange(len(real))
         axes.set_title(name)
         axes.set_xlim(0, len(real))
@@ -233,20 +235,33 @@ class PolynomialBuilder(object):
             axes.plot(r, reconstructed, label='reconstructed')
         axes.plot(r, real, label='real')
         axes.legend(loc='upper right', fontsize=16)
+
+    def plot_graphs_with_prediction(self, steps):
+        self.XF, self.YF = self._solution.build_predicted(steps)
+        XF = self.XF
+        YF = self.YF
+        dd = 0
+        for i, x in enumerate(self._solution.X_):
+            for j, xc in enumerate(x.T):
+                dd = dd+1
+        fig, axes = plt.subplots(2, dd, figsize=(13,13))
+
+
+        ki = 0
+        for i, x in enumerate(self._solution.X_):
+            for j, xc in enumerate(x.T):
+                self.compare_vals(fig, axes[0][ki],'X{}{}'.format(i + 1, j + 1), xc.getA1(), XF[i][j])
+                axes[0][ki].grid()
+                ki = ki + 1
+        for i in range(self._solution.dim[3]):
+            self.compare_vals(fig, axes[1][i],'Y{}'.format(i + 1), self._solution.Y_[:, i].getA1(), YF[:, i])
+            axes[1][i].grid()
+        manager = plt.get_current_fig_manager()
+        manager.set_window_title('Graph')
         if os_name == 'posix':
             fig.show()
         else:
             plt.show()
-
-    def plot_graphs_with_prediction(self, steps):
-        XF, YF = self._solution.build_predicted(steps)
-        for i, x in enumerate(self._solution.X_):
-            for j, xc in enumerate(x.T):
-                self.compare_vals('X{}{}'.format(i + 1, j + 1), xc.getA1(), XF[i][j])
-        for i in range(self._solution.dim[3]):
-            self.compare_vals('Y{}'.format(i + 1), self._solution.Y_[:, i].getA1(), YF[:, i],
-                              self._solution.F_[:, i].getA1())
-
 
 class PolynomialBuilderExpTh(PolynomialBuilder):
     def _print_psi_i_jk(self, i, j, k, mode=0):

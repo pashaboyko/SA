@@ -181,7 +181,6 @@ class MainWindow(QDialog, form_class):
                 if arima_st > 0:
                     self.solution.plot_graphs_with_prediction(arima_st)
                 else:
-                    self.solution.plot_graphs()
                     fig = self.solution.plot_graphs(0, poly_type=self.type)
                     for i in reversed(range(self.lay.count())): 
                         self.lay.itemAt(i).widget().setParent(None)
