@@ -12,7 +12,7 @@ from lab_3.system_solve import *
 class Solve(object):
     OFFSET = 1e-10
 
-    def __init__(self, d):
+    def __init__(self, d, maxIT = 10000):
         self.n = d['samples']
         self.dim = d['dimensions']
         self.filename_input = d['input_file']
@@ -24,6 +24,7 @@ class Solve(object):
         self.norm_error = 0.0
         self.eps = 1E-8
         self.error = 0.0
+        self.maxIT = maxIT
 
     def define_data(self):
         f = open(self.filename_input, 'r')
@@ -50,7 +51,7 @@ class Solve(object):
         elif type == 'cjg3':
             return conjugate_gradient_method_v3(A.T * A, A.T * b, self.eps)
         elif type == 'coord':
-            return coordinate_descent(A.T * A, A.T * b, self.eps)
+            return coordinate_descent(A.T * A, A.T * b, self.eps, maxIterations = self.maxIT)
 
     def norm_data(self):
         """

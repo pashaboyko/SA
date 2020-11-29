@@ -35,7 +35,7 @@ class BruteForceWindow(QDialog, form_class):
         if self.custom_struct:
             solver = SolveExpTh(self.params)
         else:
-            solver = Solve(self.params)
+            solver = Solve(self.params, 100)
         p = [[i for i in range(self.low_edge[j], self.high_edge[j]+1, self.step[j])] for j in range(len(self.step))]
         best_deg = determine_deg(solver, p[0], p[1], p[2])
         bd = best_deg[0]

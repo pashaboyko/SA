@@ -83,7 +83,7 @@ def conjugate_gradient_method_v3(A, b, eps):
             p = rnext + beta * p
     return np.matrix(x)
 
-def coordinate_descent(A, b, eps, maxIterations = 10000):
+def coordinate_descent(A, b, eps, maxIterations = 100):
     b = np.array(list(itertools.chain(*b.tolist())))
     A = np.array(A)
     N = A.shape[0]
