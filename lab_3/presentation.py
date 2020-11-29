@@ -187,17 +187,18 @@ class PolynomialBuilder(object):
             self.index = self.index + 1
             if self.index >= self._solution.Y.shape[1]:
                 self.index = 0
-        Y_norm = self._solution.Y_
-        F_norm = self._solution.F_
+        Y_norm = self._solution.Y
+        F_norm = self._solution.F
 
         fig, axes = plt.subplots(1,figsize=(9,9))
+        '''
         if self.index_norm[self.index] < 1:
         
             Y_norm[:, self.index] = (Y_norm[:, self.index] - self.minY[self.index]) / (self.maxY[self.index] - self.minY[self.index])
             F_norm[:, self.index] = (F_norm[:, self.index] - self.minY[self.index]) / (self.maxY[self.index] - self.minY[self.index])
 
             self.index_norm[self.index] = self.index_norm[self.index] + 1
-
+        '''
         ax = axes  # real and estimated graphs
         fig.suptitle(f'Наближення, реальні значення, нев`язка (Полином - {poly_type}) ', fontsize=9)
         #ax.title.set_text(f'Наближення, реальні значення, нев`язка \n Полином - {poly_type} ')
