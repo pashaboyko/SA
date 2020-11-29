@@ -76,11 +76,14 @@ class MainWindow_2(QDialog, form_class):
 
         self.type = 'null'  
         if self.radio_cheb.isChecked():
-            self.type = 'chebyshev'
-        elif self.radio_legend.isChecked():
+            #self.type = 'chebyshev'
             self.type = 'legendre'
+        elif self.radio_legend.isChecked():
+            #self.type = 'legendre'
+            self.type = 'sh_legendre'
         elif self.radio_lagg.isChecked():
-            self.type = 'laguerre'
+            self.type = 'sh_cheb_2'
+            #self.type = 'laguerre'
         elif self.radio_herm.isChecked():
             self.type = 'hermit'
 

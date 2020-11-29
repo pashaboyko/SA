@@ -115,6 +115,10 @@ class Solve(object):
             self.poly_f = special.eval_laguerre
         elif self.poly_type == 'hermit':
             self.poly_f = special.eval_hermite
+        elif self.poly_type == 'sh_legendre':
+            self.poly_f = special.eval_sh_legendre
+        elif self.poly_type == 'sh_cheb_2':
+            self.poly_f = lambda deg, x: special.eval_sh_chebyu(deg, x) / (deg + 1)
 
     def built_A(self):
         '''

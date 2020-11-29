@@ -41,7 +41,7 @@
          <item row="1" column="0">
           <widget class="QLineEdit" name="line_input">
            <property name="text">
-            <string>/Users/boiko.pavlo/SAS/SA/lab_3/Variant3.txt</string>
+            <string>lab_3/Variant3.txt</string>
            </property>
            <property name="placeholderText">
             <string>Input file</string>
@@ -54,7 +54,7 @@
             <number>999</number>
            </property>
            <property name="value">
-            <number>45</number>
+            <number>48</number>
            </property>
           </widget>
          </item>
@@ -360,6 +360,12 @@
             <property name="text">
              <string>Визначати lambda з
  3 систем рівнянь</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+            <property name="tristate">
+             <bool>false</bool>
             </property>
            </widget>
           </item>
