@@ -1,44 +1,54 @@
 __author__ = 'boiko'
-import warnings
-import math
-
 from statsmodels.tsa.arima_model import ARIMA
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy.optimize import brute
+from sklearn.metrics import mean_squared_error
+from math import sqrt
 
 
-def choose_arima_order(endog):
-    def objfunc(order, *params):
-        series = params
+def evaluate_arima_model(X, arima_order, steps):
+    # prepare training dataset
+    X = X.astype('float32')
+    train_size = int(steps)
+    train, test = X[0:train_size], X[train_size:]
+    history = [x for x in train]
+    # make predictions
+    predictions = list()
+    for t in range(len(test)):
+        model = ARIMA(history, order=arima_order)
+        # model_fit = model.fit(disp=0)
+        model_fit = model.fit(trend='nc', disp=0)
+        yhat = model_fit.forecast()[0]
+        predictions.append(yhat)
+        history.append(test[t])
+    # calculate out of sample error
+    rmse = sqrt(mean_squared_error(test, predictions))
+    return rmse
 
-        try:
-            mod = ARIMA(series, order, exog=None)
-            with warnings.catch_warnings():
-                warnings.simplefilter("ignore")
-                res = mod.fit(disp=0, solver='bfgs', maxiter=5000)
-                #res = mod.fit(disp=0, solver='cg', maxiter=5000)
-        except:
-            return float('inf')
-        if math.isnan(res.aic):
-            return float('inf')
-        return res.aic
+# evaluate combinations of p, d and q values for an ARIMA model
+def evaluate_models(dataset, steps, p_values, d_values, q_values):
+    dataset = dataset.astype('float32')
+    best_score, best_cfg = float("inf"), None
+    p1,q1,d1 = 0,0,0
+    for p in p_values:
+        for d in d_values:
+            for q in q_values:
+                order = (p, d, q)
+                try:
+                    rmse = evaluate_arima_model(dataset, order,steps)
+                    print(rmse)
+                    if rmse < best_score:
+                        p1 = p
+                        q1 = q
+                        d1 = d
+                        best_score, best_cfg = rmse, order
+                    print('ARIMA%s RMSE=%.3f' % (order, rmse))
+                except:
+                    continue
+    print('Best ARIMA%s RMSE=%.3f' % (best_cfg, best_score))
+    return p1, d1, q1
 
-    grid = (slice(1, 5, 1), slice(0, 3, 1), slice(0, 5, 1))
 
-    t = brute(objfunc, grid, args=endog, finish=None).astype(int)
-
-    return ARIMA(endog, t, exog=None).fit()
-
-
-def forecast(x, steps):
-    mod = choose_arima_order(x[:-steps])
-
-    t = mod.forecast(steps)[0]
-
-    forecast_res = np.zeros(x.shape[0])
-    for k in range(x.shape[0] - steps):
-        forecast_res[k] = x[k]
-    for k in range(x.shape[0] - steps, x.shape[0]):
-        forecast_res[k] = t[k - x.shape[0] + steps]
-    return forecast_res
+def StartProducingARIMAForecastValues(dataVals, p, d, q):
+    model = ARIMA(dataVals, order=(p, d, q))
+    model_fit = model.fit(disp=0)
+    pred = model_fit.forecast()[0]
+    return pred

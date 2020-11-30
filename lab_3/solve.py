@@ -1,10 +1,11 @@
 from copy import deepcopy
 import numpy as np
-import matplotlib.pyplot as plt
-from lab_3.forecast_arima import forecast
+from lab_3.forecast_arima import evaluate_models, StartProducingARIMAForecastValues
 from scipy import special
 from openpyxl import Workbook
 from tabulate import tabulate as tb
+from sklearn.metrics import mean_squared_error
+import array as arr
 
 from lab_3.system_solve import *
 
@@ -475,11 +476,32 @@ class Solve(object):
         return result
 
     def build_predicted(self, steps):
+        np.warnings.filterwarnings('ignore', category=np.VisibleDeprecationWarning)
         XF = list()
         for i, x in enumerate(self.X_):
             xf = list()
             for j, xc in enumerate(x.T):
-                xf.append(forecast(xc.getA1(), steps))
+                p_val, d_val, q_val = evaluate_models(xc.getA1(), steps, range(0, 3), range(0, 3), range(0, 3))
+                predictions = StartProducingARIMAForecastValues(xc.getA1(), p_val, d_val, q_val)
+                print('First Prediction=%f' % (predictions))
+
+                Actual = [x for x in xc.getA1()]
+                Predictions = []
+
+                for timestamp in range(len(xc.getA1())):
+                    ActualValue = xc.getA1()[timestamp]
+                    Prediction = StartProducingARIMAForecastValues(Actual, p_val, d_val, q_val)
+                    print('Actual=%f, Predicted=%f' % (ActualValue, Prediction))
+                    for numb in Prediction:
+                        Predictions.append(numb)
+                    Actual.append(ActualValue)
+
+                Predictions[:-steps] = xc.getA1()[:-steps]
+                xf.append(Predictions)
+
+                Error = mean_squared_error(xc.getA1()[-steps:], Predictions[-steps:])
+
+                print('Test Mean Squared Error : %.3f' % Error)
             XF.append(xf)
         yf = list()
         for s in range(1, steps + 1):
