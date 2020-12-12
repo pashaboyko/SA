@@ -55,10 +55,10 @@
      <item>
       <widget class="QPushButton" name="pushButton_3">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="text">
-        <string>Lab4 Soon</string>
+        <string>Lab4</string>
        </property>
       </widget>
      </item>

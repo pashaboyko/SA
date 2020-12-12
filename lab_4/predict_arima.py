@@ -3,7 +3,6 @@ import math
 
 from statsmodels.tsa.arima_model import ARIMA
 import numpy as np
-import matplotlib.pyplot as plt
 from scipy.optimize import brute
 
 

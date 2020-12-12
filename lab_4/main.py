@@ -1,37 +1,24 @@
-import matplotlib.pyplot as plt
+__author__ = 'boiko'
+
 import matplotlib
 from PyQt5.uic import loadUiType
 
 matplotlib.use("Qt5Agg", force=True)
 
-
-
-
-
-import os
 import sys
-'''
-os_path_list = os.path.abspath(os.getcwd()).split('\\')
-os_path_list[-1] = "data"
-os_path = ''
-for el in os_path_list:
-    os_path += el
-    os_path += '\\'
-os_path += 'reanim.xlsx'
-'''
-from PyQt5.QtCore import pyqtSlot, pyqtSignal
+from PyQt5.QtCore import pyqtSlot, pyqtSignal, QTimer
 from PyQt5.QtWidgets import QApplication, QDialog, QFileDialog, QMessageBox
 
 
-from solver_manager import * #SolverManager
-from begin import BruteForceWindow
-#from main_window import Ui_Form
+from lab_4.solver_manager import *
+from lab_4.begin import BruteForceWindow
+
 
 
 
 app = QApplication(sys.argv)
 app.setApplicationName('Реанимобиль 2')
-form_class, base_class = loadUiType('main_window_2.ui')
+form_class, base_class = loadUiType('lab_4/main_window_2.ui')
 
 
 class MainWindow(QDialog, form_class):
@@ -40,8 +27,10 @@ class MainWindow(QDialog, form_class):
     output_changed = pyqtSignal('QString')
 
 
-    def __init__(self, *args):
-        super(MainWindow, self).__init__(*args)
+    def __init__(self, parent = None):
+        super(MainWindow, self).__init__(parent)
+
+
 
         # setting up ui
         self.setupUi(self)
@@ -50,7 +39,11 @@ class MainWindow(QDialog, form_class):
         self.dimensions = [self.x1_dim.value(), self.x2_dim.value(),
                                     self.x3_dim.value(), self.y_dim.value()]
         self.degrees = [self.x1_deg.value(), self.x2_deg.value(), self.x3_deg.value()]
+        self.remove = self.remove_old.isChecked()
+        self.status_bar = None
         self.type = 'null'
+        self.timer = None
+        self.setWindowTitle('Діагностування складних технічних систем')
         if self.radio_sh_cheb.isChecked():
             self.type = 'sh_cheb_doubled'
         elif self.radio_cheb.isChecked():
@@ -73,6 +66,8 @@ class MainWindow(QDialog, form_class):
         #set tablewidget
         self.tablewidget.verticalHeader().hide()
         self.tablewidget.setRowCount(0)
+
+
         column_size = [60, 70, 100, 100,200, 60, 200, 80]
         for index, size in enumerate(column_size):
              self.tablewidget.setColumnWidth(index,size)
@@ -169,7 +164,7 @@ class MainWindow(QDialog, form_class):
         self.exec_button.setEnabled(False)
         try:
             self.tablewidget.setRowCount(self.predictBox.value())
-            self.manager = SolverManager(self._get_params())
+            self.manager = SolverManager(self._get_params(), self)
             self.manager.prepare(self.input_path)
         except Exception as e:
             QMessageBox.warning(self,'Error!','Error happened during execution: ' + str(e))
@@ -198,6 +193,41 @@ class MainWindow(QDialog, form_class):
         self.weight_method = value.lower()
         return
 
+    def initial_graphics_fill(self, real_values, predicted_values, risk_values, time_ticks):
+        for i, graph in enumerate(self.graphs):
+            graph.compute_initial_figure(real_values.T[i], predicted_values[i], risk_values[i], time_ticks)
+
+    def update_graphics(self, real_value, predicted_values, risk_values, forecast_ticks):
+        for i, graph in enumerate(self.graphs):
+            # print(real_value[i], risk_values[i])
+            graph.update_figure(real_value[i], predicted_values[i], risk_values[i], forecast_ticks)
+
+    def closeEvent(self, event):
+        if self.timer and self.timer.isActive():
+            self.timer.stop()
+            self.timer.disconnect()
+            self.timer.deleteLater()
+        super(QDialog, self).closeEvent(event)
+
+    @pyqtSlot()
+    def manipulate_timer(self):
+        if not self.timer:
+            print(1)
+            self.start_button.setText('ПАУЗА')
+            self.timer = QTimer(self)
+            self.timer.timeout.connect(self.execute_iteration)
+            self.timer.start(50)
+        elif self.timer.isActive():
+            self.start_button.setText('ПРОДОВЖИТИ')
+            self.timer.stop()
+        else:
+            self.start_button.setText('ПАУЗА')
+            self.timer.start()
+
+    @pyqtSlot()
+    def execute_iteration(self):
+        self.engine.launch()
+
     def _get_params(self):
         return dict(custom_struct=self.custom_func_struct,poly_type=self.type, degrees=self.degrees,
                     dimensions=self.dimensions,
@@ -208,8 +238,4 @@ class MainWindow(QDialog, form_class):
                            'y2':self.lbl_y2, 'y3':self.lbl_y3})
 
 
-# -----------------------------------------------------#
-form = MainWindow()
-form.setWindowTitle('Діагностування складних технічних систем')
-form.show()
-sys.exit(app.exec_())
+

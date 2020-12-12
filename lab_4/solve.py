@@ -1,7 +1,7 @@
 from copy import deepcopy
 #from openpyxl import Workbook
-from system_solve import *
-from predict_ar import ar as forecast
+from lab_4.system_solve import *
+from lab_4.predict_ar import ar as forecast
 
 
 def eval_chebyt(n, x):

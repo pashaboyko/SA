@@ -1,12 +1,8 @@
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QDialog, QStatusBar
-from PyQt5.QtCore import QTimer, pyqtSlot
-from PyQt5.uic import loadUiType
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure, Axes
 import numpy as np
-from graphics import Ui_OperatorWindow
-form_class, base_class = loadUiType('graph_table.ui')
+
 
 class DynamicRiskCanvas(FigureCanvas):
     """A canvas that updates itself every second with a new plot."""
@@ -73,57 +69,6 @@ class DynamicRiskCanvas(FigureCanvas):
         self.draw()
 
 
-class OperatorViewWindow(QDialog):
 
-    def __init__(self, *args, **kwargs):
-        super(OperatorViewWindow, self).__init__(*args)
-        warning = kwargs.get('warn', [0,0,0])
-        failure = kwargs.get('fail', [0,0,0])
-        tail = kwargs.get('tail', 10)
-        remove_old = kwargs.get('remove_old', False)
-        descriptions = kwargs.get('descriptions', [None] * 3)
-        self.timer = None
-        self.ui = form_class()
-        self.ui.setupUi(self)
-        self.status_bar = QStatusBar(self)
-        self.ui.windowLayout.addWidget(self.status_bar)
-        self.engine = kwargs['callback']
-        self.graphs = [DynamicRiskCanvas(self, coordinate=i + 1, warning=warning[i], failure=failure[i],
-                                         tail=tail, remove_old=remove_old, description=descriptions[i])
-                       for i in range(3)]
-        for graph in self.graphs:
-            self.ui.y_layout.addWidget(graph)
 
-    def initial_graphics_fill(self, real_values, predicted_values, risk_values, time_ticks):
-        for i, graph in enumerate(self.graphs):
-            graph.compute_initial_figure(real_values.T[i], predicted_values[i], risk_values[i], time_ticks)
-
-    def update_graphics(self, real_value, predicted_values, risk_values, forecast_ticks):
-        for i, graph in enumerate(self.graphs):
-            # print(real_value[i], risk_values[i])
-            graph.update_figure(real_value[i], predicted_values[i], risk_values[i], forecast_ticks)
-
-    def closeEvent(self, event):
-        if self.timer and self.timer.isActive():
-            self.timer.stop()
-            self.timer.disconnect()
-            self.timer.deleteLater()
-        super(QDialog, self).closeEvent(event)
-
-    @pyqtSlot()
-    def manipulate_timer(self):
-        if not self.timer:
-            self.ui.start_button.setText('ПАУЗА')
-            self.timer = QTimer(self)
-            self.timer.timeout.connect(self.execute_iteration)
-            self.timer.start(50)
-        elif self.timer.isActive():
-            self.ui.start_button.setText('ПРОДОВЖИТИ')
-            self.timer.stop()
-        else:
-            self.ui.start_button.setText('ПАУЗА')
-            self.timer.start()
-
-    @pyqtSlot()
-    def execute_iteration(self):
-        self.engine.launch()
+        return self

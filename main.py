@@ -9,6 +9,7 @@ from PyQt5.uic import loadUiType
 
 from lab_3.main import MainWindow
 from lab_2.main import MainWindow_2
+from lab_4.main import MainWindow as MainWindow_3
 
 
 app = QApplication(sys.argv)
@@ -47,12 +48,13 @@ class StartWindow(QDialog, form_class):
 
 	@pyqtSlot()
 	def show4lab(self):
-		'''
-		self.close()
+
+		self.hide()
+		dialog = MainWindow_3(parent=self)
 		self.twoWindow = MainWindow()
-		self.twoWindow.setWindowTitle("Лабороторная 3 Бойко Зинченко Худиков")
-		self.twoWindow.show()
-		'''
+		if dialog.exec():
+			pass  # do stuff on success
+		self.show()
 		return
 
 	@staticmethod

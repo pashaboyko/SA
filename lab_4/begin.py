@@ -1,13 +1,10 @@
 from PyQt5.QtCore import pyqtSlot, pyqtSignal
 from PyQt5.QtWidgets import QDialog, QMessageBox
-from PyQt5.uic import loadUiType
 
-from find_degrees import *
-from solve_custom import SolveExpTh
-from solve import Solve
-from begin_window import Ui_Form
-
-# form_class, base_class = loadUiType('bruteforce_window.ui')
+from lab_4.find_degrees import *
+from lab_4.solve_custom import SolveExpTh
+from lab_4.solve import Solve
+from lab_4.begin_window import Ui_Form
 
 
 class BruteForceWindow(QDialog, Ui_Form):

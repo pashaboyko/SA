@@ -1,16 +1,19 @@
 import random
-from solve import *
-from solve_custom import SolveExpTh
-from read_data import read_data
-from operator_table import OperatorViewWindow
-
+from lab_4.solve import *
+from lab_4.solve_custom import SolveExpTh
+from lab_4.read_data import read_data
+from PyQt5 import QtWidgets
 from PyQt5.QtCore import pyqtSlot, pyqtSignal, Qt
-from PyQt5.QtGui import QTextDocument, QFont
+
 from PyQt5.QtWidgets import QApplication, QDialog, QFileDialog, QMessageBox, QTableWidgetItem
-from PyQt5.uic import loadUiType
+
+from PyQt5.QtWidgets import QDialog, QStatusBar
+
 
 import os
 import time
+
+from lab_4.operator_table import DynamicRiskCanvas
 
 START_FUEL = 47
 TIME_DELTA = 10
@@ -65,7 +68,7 @@ class SolverManager(object):
     Y_C = np.array([[11.7], [1], [11.7]])  # warning value
     Y_D = np.array([[10.5], [0.0], [10.5]])  # failure value
 
-    def __init__(self, d):
+    def __init__(self, d, mainWindow):
         self.custom_struct = d['custom_struct']
         d['dimensions'][3] = 1
         if d['custom_struct']:
@@ -75,10 +78,25 @@ class SolverManager(object):
         self.first_launch = True
         self.batch_size = d['samples']
         self.forecast_size = d['pred_steps']
-        self.operator_view = OperatorViewWindow(warn=self.Y_C, fail=self.Y_D, callback=self,
-                                                descriptions=['Боротова напруга', 'Запас палива',
-                                                              'Напруга в АБ'],
-                                                tail=self.forecast_size)
+        remove_old =  mainWindow.remove_old.isChecked()
+        mainWindow.timer = None
+        if mainWindow.status_bar == None:
+            mainWindow.status_bar = QStatusBar(mainWindow)
+            mainWindow.lay = QtWidgets.QVBoxLayout(mainWindow.status_bar)
+        mainWindow.start_button.setText('СТАРТ')
+        mainWindow.start_button.clicked.connect(mainWindow.manipulate_timer)
+        mainWindow.engine = self
+        descriptions = ['Боротова напруга', 'Запас палива', 'Напруга в АБ']
+        mainWindow.graphs = [DynamicRiskCanvas(mainWindow, coordinate=i + 1, warning=self.Y_C[i], failure=self.Y_D[i],
+                                         tail=self.forecast_size, remove_old=remove_old, description=descriptions[i])
+                       for i in range(3)]
+        for i in reversed(range(mainWindow.y_layout.count())):
+            mainWindow.y_layout.itemAt(i).widget().setParent(None)
+        for graph in mainWindow.graphs:
+            mainWindow.y_layout.addWidget(graph)
+
+        self.operator_view = mainWindow
+
         self.current_iter = 1
         self.y_influenced = None
         self.data_window = None
@@ -145,6 +163,7 @@ class SolverManager(object):
                     str(np.where(result_positive)[0].tolist())), 1000)
         else:
             self.operator_view.status_bar.showMessage('OK',1000)
+
 
 
 

@@ -2,8 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from numpy.polynomial import Polynomial as pnm
 from os import name as os_name
-from solve import Solve
-import basis_generator as b_gen
+from lab_4.solve import Solve
+import lab_4.basis_generator as b_gen
 
 
 class PolynomialBuilder(object):

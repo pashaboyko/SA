@@ -1,10 +1,62 @@
+# -*- coding: utf-8 -*-
+
+
+from scipy import special
+from openpyxl import Workbook
+import numpy as np
+from lab_4.system_solve import *
+from tabulate import tabulate as tb
+
 from copy import deepcopy
 
 from tabulate import tabulate as tb
 from math import pi
 
-from system_solve import *
-from solve import Solve
+from lab_4.solve import Solve
+
+def eval_chebyt(n, x):
+    t0 =np.poly1d([1])
+    t1 =np.poly1d([1,0])
+    if n == 0:
+        t = t0
+    elif n == 1:
+        t = t1
+    else:
+        for i in range(1,n):
+            t = np.poly1d([2,0])*t1 -t0
+            t0 = t1
+            t1 = t
+    return t(x)
+
+def eval_sh_chebyt(n, x):
+    t0 =np.poly1d([1])
+    t1 =np.poly1d([1,0])
+    if n == 0:
+        t = t0
+    elif n == 1:
+        t = t1
+    else:
+        for i in range(1,n):
+            t = np.poly1d([2,0])*t1 -t0
+            t0 = t1
+            t1 = t
+            # print(t)
+    return t(np.poly1d([2,-1]))(x)
+
+def eval_sh_chebyu(n, x):
+    t0 =np.poly1d([1])
+    t1 =np.poly1d([2,0])
+    if n == 0:
+        t = t0
+    elif n == 1:
+        t = t1
+    else:
+        for i in range(1,n):
+            t = np.poly1d([2,0])*t1 -t0
+            t0 = t1
+            t1 = t
+    return t(np.poly1d([2,-1]))(x)
+
 
 
 class SolveExpTh(Solve):
@@ -82,62 +134,63 @@ class SolveExpTh(Solve):
         for i in range(len(self.X)):
             vec = vector(self.X[i], self.deg[i])
             A = np.append(A, vec, 1)
-        self.A_log = np.matrix(np.tanh(A))
-        self.A = np.exp(self.A_log)
+        self.A = np.matrix(A)
+        
+
+    
+
 
     def lamb(self):
-        lamb = np.ndarray(shape=(self.A.shape[1], 0), dtype=float)
+        lamb = np.ndarray(shape = (self.A.shape[1],0), dtype = float)
         for i in range(self.dim[3]):
             if self.splitted_lambdas:
                 boundary_1 = self.deg[0] * self.dim[0]
                 boundary_2 = self.deg[1] * self.dim[1] + boundary_1
-                lamb1 = self._minimize_equation(self.A_log[:, :boundary_1], self.B_log[:, i])
-                lamb2 = self._minimize_equation(self.A_log[:, boundary_1:boundary_2], self.B_log[:, i])
-                lamb3 = self._minimize_equation(self.A_log[:, boundary_2:], self.B_log[:, i])
+                lamb1 = self._minimize_equation(self.A[:, :boundary_1], self.B[:, i])
+                lamb2 = self._minimize_equation(self.A[:, boundary_1:boundary_2], self.B[:, i])
+                lamb3 = self._minimize_equation(self.A[:, boundary_2:], self.B[:, i])
                 lamb = np.append(lamb, np.concatenate((lamb1, lamb2, lamb3)), axis=1)
             else:
-                lamb = np.append(lamb, self._minimize_equation(self.A_log, self.B_log[:, i]), axis=1)
-        self.Lamb = np.matrix(lamb)  # Lamb in full events
+                lamb = np.append(lamb, self._minimize_equation(self.A, self.B[:, i]), axis=1)
+        self.Lamb = np.matrix(lamb) #Lamb in full events
+
 
     def psi(self):
         def built_psi(lamb):
-            """
+            '''
             return matrix xi1 for b1 as matrix
             :param A:
             :param lamb:
             :param p:
             :return: matrix psi, for each Y
-            """
-            psi = np.ndarray(shape=(self.n, self.mX), dtype=float)
-            q = 0  # iterator in lamb and A
-            l = 0  # iterator in columns psi
-            for k in range(len(self.X)):  # choose X1 or X2 or X3
-                for s in range(self.X[k].shape[1]):  # choose X11 or X12 or X13
+            '''
+            psi = np.ndarray(shape=(self.n, self.mX), dtype = float)
+            q = 0 #iterator in lamb and A
+            l = 0 #iterator in columns psi
+            for k in range(len(self.X)): # choose X1 or X2 or X3
+                for s in range(self.X[k].shape[1]):# choose X11 or X12 or X13
                     for i in range(self.X[k].shape[0]):
-                        psi[i, l] = self.A_log[i, q:q + self.deg[k]] * lamb[q:q + self.deg[k], 0]
-                    q += self.deg[k]
-                    l += 1
+                            psi[i,l] = self.A[i,q:q+self.deg[k]]*lamb[q:q+self.deg[k], 0]
+                    q+=self.deg[k]
+                    l+=1
             return np.matrix(psi)
 
-        self.Psi = list()
-        self.Psi_tanh = list()
+        self.Psi = list() #as list because psi[i] is matrix(not vector)
         for i in range(self.dim[3]):
-            self.Psi.append(np.exp(built_psi(self.Lamb[:, i])) - 1)  # Psi = exp(sum(lambda*tanh(phi))) - 1
-            self.Psi_tanh.append(np.tanh(self.Psi[-1]))
+            self.Psi.append(built_psi(self.Lamb[:,i]))
 
+    
 
     def built_a(self):
-        self.a = np.ndarray(shape=(self.mX, 0), dtype=float)
+        self.a = np.ndarray(shape=(self.mX,0), dtype=float)
         for i in range(self.dim[3]):
-            a1 = self._minimize_equation(self.Psi_tanh[i][:, :self.dim_integral[0]],
-                                         np.log(self.Y[:, i] + 1 + self.OFFSET))
-            a2 = self._minimize_equation(self.Psi_tanh[i][:, self.dim_integral[0]:self.dim_integral[1]],
-                                         np.log(self.Y[:, i] + 1 + self.OFFSET))
-            a3 = self._minimize_equation(self.Psi_tanh[i][:, self.dim_integral[1]:],
-                                         np.log(self.Y[:, i] + 1 + self.OFFSET))
+            a1 = self._minimize_equation(self.Psi[i][:, :self.dim_integral[0]], self.Y[:, i]+self.OFFSET)
+            a2 = self._minimize_equation(self.Psi[i][:, self.dim_integral[0]:self.dim_integral[1]], self.Y[:, i]+self.OFFSET)
+            a3 = self._minimize_equation(self.Psi[i][:, self.dim_integral[1]:], self.Y[:, i]+self.OFFSET)
             # temp = self._minimize_equation(self.Psi[i], self.Y[:, i])
             # self.a = np.append(self.a, temp, axis=1)
-            self.a = np.append(self.a, np.vstack((a1, a2, a3)), axis=1)
+            self.a = np.append(self.a, np.vstack((a1, a2, a3)),axis = 1)
+
 
     def built_F1i(self, psi, a):
         """
@@ -159,31 +212,34 @@ class SolveExpTh(Solve):
             k = self.dim_integral[j]
         return np.matrix(F1i)
 
+    
     def built_Fi(self):
-        self.Fi_tanh = list()
-        self.Fi = list()
+        self.Fi = []
         for i in range(self.dim[3]):
-            self.Fi.append(np.exp(self.built_F1i(self.Psi_tanh[i], self.a[:, i])) - 1)  # Fi = exp(sum(a*tanh(Psi))) - 1
-            self.Fi_tanh.append(np.tanh(self.Fi[i]))
+            self.Fi.append(self.built_F1i(self.Psi[i],self.a[:,i]))
 
     def built_c(self):
         self.c = np.ndarray(shape=(len(self.X), 0), dtype=float)
         for i in range(self.dim[3]):
-            self.c = np.append(self.c, self._minimize_equation(self.Fi_tanh[i], np.log(self.Y[:, i] + 1 + self.OFFSET))
-                               , axis=1)
+            #self.c = np.append(self.c, self._minimize_equation(self.Fi[i].T*self.Fi[i], self.Fi[i].T*self.Y[:,i],self.eps + self.OFFSET),\
+            #                   axis=1)
+            self.c = np.append(self.c, conjugate_gradient_method_v2(self.Fi[i].T*self.Fi[i], self.Fi[i].T*self.Y[:,i],self.eps),\
+                              axis=1)
+        
 
     def built_F(self):
         F = np.ndarray(self.Y.shape, dtype=float)
         for j in range(F.shape[1]):  # 2
             for i in range(F.shape[0]):  # 50
                 try:
-                    F[i, j] = self.Fi_tanh[j][i, :] * self.c[:, j]
+                    F[i, j] = self.Fi[j][i,:]*self.c[:,j]
                 except:
                     F[i, j] = 0
-        self.F = np.exp(np.matrix(F)) - 1 - self.OFFSET  # F = exp(sum(c*tanh(Fi))) - 1
+        self.F = np.matrix(F) - self.OFFSET  # F = exp(sum(c*tanh(Fi))) - 1
         self.norm_error = []
         for i in range(self.Y.shape[1]):
             self.norm_error.append(np.linalg.norm(self.Y[:, i] - self.F[:, i], np.inf))
+
 
     def aggregate(self, values, coeffs):
         return np.exp(np.dot(np.tanh(values), coeffs)) - 1

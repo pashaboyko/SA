@@ -1,7 +1,5 @@
 import numpy as np
 from itertools import product
-from multiprocessing import Pool
-from copy import deepcopy
 
 
 def brute(args):
